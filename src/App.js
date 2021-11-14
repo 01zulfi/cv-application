@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import GeneralInfoForm from "./components/GeneralInfoForm";
+import CVInput from "./components/CVInput";
 
 class App extends Component {
   render() {
     return (
       <div>
         <h1>CV Application</h1>
-        <GeneralInfoForm />
+        <CVInput />
       </div>
     );
   }
