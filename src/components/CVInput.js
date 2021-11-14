@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GeneralInfoForm from "./GeneralInfoForm";
 import EducationInfoForm from "./EducationInfoForm";
+import WorkInfoForm from "./WorkInfoForm";
 
 class CVInput extends Component {
   render() {
@@ -8,6 +9,7 @@ class CVInput extends Component {
       <div className="CVInput">
         <GeneralInfoForm />
         <EducationInfoForm />
+        <WorkInfoForm />
       </div>
     );
   }

@@ -6,6 +6,8 @@ class App extends Component {
     return (
       <div>
         <h1>CV Application</h1>
+        <button type="button" className="edit">Edit</button>
+        <button type="button" className="preview">Preview</button>
         <CVInput />
       </div>
     );
