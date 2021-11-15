@@ -36,12 +36,11 @@ class EducationInfoForm extends Component {
 }
 
 EducationInfoForm.propTypes = {
-  /* eslint-disable react/prop-types */
   quantity: PropTypes.array,
 };
 
 EducationInfoForm.defaultProps = {
-  quantity: 1,
+  quantity: [],
 };
 
 export default EducationInfoForm;
