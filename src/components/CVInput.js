@@ -8,7 +8,8 @@ class CVInput extends Component {
     return (
       <div className="CVInput">
         <GeneralInfoForm />
-        <EducationInfoForm />
+        <EducationInfoForm quantity={2} />
+        <button className="add-education-button" type="button">Add Education</button>
         <WorkInfoForm />
       </div>
     );

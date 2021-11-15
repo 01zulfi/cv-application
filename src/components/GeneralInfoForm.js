@@ -16,7 +16,6 @@ class GeneralInfoForm extends Component {
             Last Name:
             <input type="text" id="last-name-input" />
           </label>
-
           <label htmlFor="email-input">
             Email:
             <input type="email" id="email-input" />
