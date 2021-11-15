@@ -10,30 +10,50 @@ class CVInput extends Component {
     super();
 
     this.state = {
-      quantity: [{ id: uniqueId() }],
+      educationQuantity: [{ id: uniqueId() }],
+      workQuantity: [{ id: uniqueId() }],
     };
 
-    this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.incrementEducationQuantity = this.incrementEducationQuantity.bind(this);
+    this.incrementWorkQuantity = this.incrementWorkQuantity.bind(this);
   }
 
-  incrementQuantity() {
-    const { quantity } = this.state;
+  incrementEducationQuantity() {
+    const { educationQuantity } = this.state;
     this.setState({
-      quantity: quantity.concat({ id: uniqueId() }),
+      educationQuantity: educationQuantity.concat({ id: uniqueId() }),
+    });
+  }
+
+  incrementWorkQuantity() {
+    const { workQuantity } = this.state;
+    this.setState({
+      workQuantity: workQuantity.concat({ id: uniqueId() }),
     });
   }
 
   render() {
-    const { quantity } = this.state;
+    const { educationQuantity, workQuantity } = this.state;
 
     return (
       <div className="CVInput">
         <GeneralInfoForm />
-        <EducationInfoForm quantity={quantity} />
-        <button className="add-education-button" type="button" onClick={this.incrementQuantity}>
+        <EducationInfoForm quantity={educationQuantity} />
+        <button
+          className="add-education-button"
+          type="button"
+          onClick={this.incrementEducationQuantity}
+        >
           Add Education
         </button>
-        <WorkInfoForm />
+        <WorkInfoForm quantity={workQuantity} />
+        <button
+          className="add-work-button"
+          type="button"
+          onClick={this.incrementWorkQuantity}
+        >
+          Add Work
+        </button>
       </div>
     );
   }

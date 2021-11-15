@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class WorkInfoForm extends Component {
   render() {
-    return (
-      <div className="work-info-form">
-        <h2>Work </h2>
+    const form = (
+      <form>
         <label htmlFor="work-title">
           Title:
           <input type="text" id="work-title" />
@@ -21,10 +21,27 @@ class WorkInfoForm extends Component {
           To:
           <input type="date" id="work-end-date" />
         </label>
-        <button type="button">Add Work</button>
+      </form>
+
+    );
+
+    const { quantity } = this.props;
+
+    return (
+      <div className="work-info-form">
+        <h2>Work </h2>
+        {quantity.map((el) => <div key={el.id}>{form}</div>)}
       </div>
     );
   }
 }
+
+WorkInfoForm.propTypes = {
+  quantity: PropTypes.array,
+};
+
+WorkInfoForm.defaultProps = {
+  quantity: [],
+};
 
 export default WorkInfoForm;
