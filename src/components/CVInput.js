@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import GeneralInfoForm from "./GeneralInfoForm";
 import EducationInfoForm from "./EducationInfoForm";
 import WorkInfoForm from "./WorkInfoForm";
@@ -34,9 +35,10 @@ class CVInput extends Component {
 
   render() {
     const { educationQuantity, workQuantity } = this.state;
+    const { style } = this.props;
 
     return (
-      <div className="CVInput">
+      <div className="CVInput" style={style}>
         <GeneralInfoForm />
         <EducationInfoForm quantity={educationQuantity} />
         <button
@@ -58,5 +60,13 @@ class CVInput extends Component {
     );
   }
 }
+
+CVInput.propTypes = {
+  style: PropTypes.object,
+};
+
+CVInput.defaultProps = {
+  style: {},
+};
 
 export default CVInput;
