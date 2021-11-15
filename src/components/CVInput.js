@@ -10,8 +10,8 @@ class CVInput extends Component {
     super();
 
     this.state = {
-      educationQuantity: [{ id: uniqueId() }],
-      workQuantity: [{ id: uniqueId() }],
+      educationQuantity: [],
+      workQuantity: [],
     };
 
     this.incrementEducationQuantity = this.incrementEducationQuantity.bind(this);
