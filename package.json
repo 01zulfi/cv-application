@@ -22,6 +22,17 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ], 
+    "rules": {
+      "react/forbid-prop-types": 0
+    },
+    "overrides": [
+      {
+        "files": ["**/*.js?(x)"],
+        "rules": {
+          "react/forbid-prop-types": "off"
+        }
+      }
     ]
   },
   "browserslist": {
