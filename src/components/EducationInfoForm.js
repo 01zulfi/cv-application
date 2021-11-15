@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class EducationInfoForm extends Component {
+  static removeForm(event) {
+    event.target.parentNode.remove();
+  }
+
   render() {
     const { quantity } = this.props;
 
@@ -23,6 +27,7 @@ class EducationInfoForm extends Component {
           To:
           <input type="date" id="education-end-date" />
         </label>
+        <button type="button" onClick={EducationInfoForm.removeForm}>Delete</button>
       </form>
     );
 

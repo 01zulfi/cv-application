@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class WorkInfoForm extends Component {
+  static removeForm(event) {
+    event.target.parentNode.remove();
+  }
+
   render() {
     const form = (
       <form>
@@ -21,8 +25,8 @@ class WorkInfoForm extends Component {
           To:
           <input type="date" id="work-end-date" />
         </label>
+        <button type="button" onClick={WorkInfoForm.removeForm}>Delete</button>
       </form>
-
     );
 
     const { quantity } = this.props;
