@@ -9,10 +9,12 @@ class App extends Component {
     this.state = {
       CVInputStyle: { display: "block" },
       CVDisplayStyle: { display: "none" },
+      CVData: { general: {}, education: [], work: [] },
     };
 
     this.editButtonEventHandler = this.editButtonEventHandler.bind(this);
     this.previewButtonEventHandler = this.previewButtonEventHandler.bind(this);
+    this.inputChangeHandler = this.inputChangeHandler.bind(this);
   }
 
   editButtonEventHandler() {
@@ -29,8 +31,24 @@ class App extends Component {
     });
   }
 
+  inputChangeHandler(event) {
+    const { CVData } = this.state;
+    let { general, education, work } = CVData;
+    if (event.target.id === "first-name-input") {
+      general = Object.assign(general, { firstName: event.target.value });
+    }
+    education = []; work = [];
+    this.setState({
+      CVData: {
+        general,
+        education,
+        work,
+      },
+    });
+  }
+
   render() {
-    const { CVInputStyle, CVDisplayStyle } = this.state;
+    const { CVInputStyle, CVDisplayStyle, CVData } = this.state;
 
     return (
       <div>
@@ -49,8 +67,8 @@ class App extends Component {
         >
           Preview
         </button>
-        <CVInput style={CVInputStyle} />
-        <CVDisplay style={CVDisplayStyle} />
+        <CVInput dataHandler={this.inputChangeHandler} style={CVInputStyle} />
+        <CVDisplay style={CVDisplayStyle} CVData={CVData} />
       </div>
     );
   }

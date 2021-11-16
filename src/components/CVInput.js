@@ -7,8 +7,8 @@ import WorkInfoForm from "./WorkInfoForm";
 const uniqueId = () => Math.floor(Math.random() * Date.now());
 
 class CVInput extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       educationQuantity: [],
@@ -35,12 +35,12 @@ class CVInput extends Component {
 
   render() {
     const { educationQuantity, workQuantity } = this.state;
-    const { style } = this.props;
+    const { style, dataHandler } = this.props;
 
     return (
       <div className="CVInput" style={style}>
-        <GeneralInfoForm />
-        <EducationInfoForm quantity={educationQuantity} />
+        <GeneralInfoForm dataHandler={dataHandler} />
+        <EducationInfoForm dataHandler={dataHandler} quantity={educationQuantity} />
         <button
           className="add-education-button"
           type="button"
@@ -48,7 +48,7 @@ class CVInput extends Component {
         >
           Add Education
         </button>
-        <WorkInfoForm quantity={workQuantity} />
+        <WorkInfoForm dataHandler={dataHandler} quantity={workQuantity} />
         <button
           className="add-work-button"
           type="button"
@@ -63,10 +63,12 @@ class CVInput extends Component {
 
 CVInput.propTypes = {
   style: PropTypes.object,
+  dataHandler: PropTypes.func,
 };
 
 CVInput.defaultProps = {
   style: {},
+  dataHandler: () => {},
 };
 
 export default CVInput;

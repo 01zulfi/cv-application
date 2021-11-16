@@ -2,15 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class CVDisplay extends Component {
-// constructor(props) {
-  //  super(props)
-// }
-
   render() {
-    const { style } = this.props;
+    const { style, CVData } = this.props;
     return (
       <div style={style}>
-        <div>Name</div>
+        <div>{CVData.general.firstName}</div>
 
       </div>
     );
@@ -19,10 +15,12 @@ class CVDisplay extends Component {
 
 CVDisplay.propTypes = {
   style: PropTypes.object,
+  CVData: PropTypes.object,
 };
 
 CVDisplay.defaultProps = {
   style: {},
+  CVData: {},
 };
 
 export default CVDisplay;
