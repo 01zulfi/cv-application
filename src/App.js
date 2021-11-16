@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CVInput from "./components/CVInput";
+import CVDisplay from "./components/CVDisplay";
 
 class App extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class App extends Component {
 
     this.state = {
       CVInputStyle: { display: "block" },
+      CVDisplayStyle: { display: "none" },
     };
 
     this.editButtonEventHandler = this.editButtonEventHandler.bind(this);
@@ -16,17 +18,19 @@ class App extends Component {
   editButtonEventHandler() {
     this.setState({
       CVInputStyle: { display: "block" },
+      CVDisplayStyle: { display: "none" },
     });
   }
 
   previewButtonEventHandler() {
     this.setState({
       CVInputStyle: { display: "none" },
+      CVDisplayStyle: { display: "block" },
     });
   }
 
   render() {
-    const { CVInputStyle } = this.state;
+    const { CVInputStyle, CVDisplayStyle } = this.state;
 
     return (
       <div>
@@ -46,6 +50,7 @@ class App extends Component {
           Preview
         </button>
         <CVInput style={CVInputStyle} />
+        <CVDisplay style={CVDisplayStyle} />
       </div>
     );
   }
