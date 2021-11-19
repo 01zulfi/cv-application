@@ -1,12 +1,34 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+
+const uniqueId = () => Math.floor(Math.random() * Date.now());
 
 class WorkInfoForm extends Component {
   static removeForm(event) {
     event.target.parentNode.remove();
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      //    data: [],
+      keys: [],
+    };
+
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+  }
+
+  incrementQuantity() {
+    const { keys } = this.state;
+    this.setState({
+      keys: keys.concat({ id: uniqueId() }),
+    });
+  }
+
   render() {
+    const { keys } = this.state;
+
     const form = (
       <form>
         <label htmlFor="work-title">
@@ -29,23 +51,20 @@ class WorkInfoForm extends Component {
       </form>
     );
 
-    const { quantity } = this.props;
-
     return (
       <div className="work-info-form">
         <h2>Work </h2>
-        {quantity.map((el) => <div key={el.id}>{form}</div>)}
+        <button type="submit" onClick={this.incrementQuantity}>Add Work</button>
+        {keys.map((el) => <div key={el.id}>{form}</div>)}
       </div>
     );
   }
 }
 
 WorkInfoForm.propTypes = {
-  quantity: PropTypes.array,
 };
 
 WorkInfoForm.defaultProps = {
-  quantity: [],
 };
 
 export default WorkInfoForm;
