@@ -11,19 +11,10 @@ class CVInput extends Component {
     super(props);
 
     this.state = {
-      educationQuantity: [],
       workQuantity: [],
     };
 
-    this.incrementEducationQuantity = this.incrementEducationQuantity.bind(this);
     this.incrementWorkQuantity = this.incrementWorkQuantity.bind(this);
-  }
-
-  incrementEducationQuantity() {
-    const { educationQuantity } = this.state;
-    this.setState({
-      educationQuantity: educationQuantity.concat({ id: uniqueId() }),
-    });
   }
 
   incrementWorkQuantity() {
@@ -34,20 +25,13 @@ class CVInput extends Component {
   }
 
   render() {
-    const { educationQuantity, workQuantity } = this.state;
+    const { workQuantity } = this.state;
     const { style, dataHandler } = this.props;
 
     return (
       <div className="CVInput" style={style}>
         <GeneralInfoForm dataHandler={dataHandler} />
-        <EducationInfoForm dataHandler={dataHandler} quantity={educationQuantity} />
-        <button
-          className="add-education-button"
-          type="button"
-          onClick={this.incrementEducationQuantity}
-        >
-          Add Education
-        </button>
+        <EducationInfoForm dataHandler={dataHandler} />
         <WorkInfoForm dataHandler={dataHandler} quantity={workQuantity} />
         <button
           className="add-work-button"

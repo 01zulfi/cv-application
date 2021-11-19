@@ -1,13 +1,33 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+
+const uniqueId = () => Math.floor(Math.random() * Date.now());
 
 class EducationInfoForm extends Component {
   static removeForm(event) {
     event.target.parentNode.remove();
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      // data: [],
+      keys: [],
+    };
+
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+  }
+
+  incrementQuantity() {
+    const { keys } = this.state;
+    this.setState({
+      keys: keys.concat({ id: uniqueId() }),
+    });
+  }
+
   render() {
-    const { quantity } = this.props;
+    const { keys } = this.state;
 
     const form = (
       <form>
@@ -34,18 +54,17 @@ class EducationInfoForm extends Component {
     return (
       <div>
         <h2>Education</h2>
-        {quantity.map((el) => <div key={el.id}>{form}</div>)}
+        <button type="button" onClick={this.incrementQuantity}>Add Education</button>
+        {keys.map((el) => <div key={el.id}>{form}</div>)}
       </div>
     );
   }
 }
 
 EducationInfoForm.propTypes = {
-  quantity: PropTypes.array,
 };
 
 EducationInfoForm.defaultProps = {
-  quantity: [],
 };
 
 export default EducationInfoForm;
