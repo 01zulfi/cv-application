@@ -4,19 +4,25 @@ import React, { Component } from "react";
 const uniqueId = () => Math.floor(Math.random() * Date.now());
 
 class WorkInfoForm extends Component {
-  static removeForm(event) {
-    event.target.parentNode.remove();
-  }
-
   constructor(props) {
     super(props);
 
     this.state = {
-      //    data: [],
       keys: [],
     };
 
+    this.removeForm = this.removeForm.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
+  }
+
+  removeForm(event) {
+    const id = event.target.parentNode.getAttribute("data-id");
+    const { keys } = this.state;
+    const newKeys = keys.filter((el) => el.id !== Number(id));
+
+    this.setState({
+      keys: newKeys,
+    });
   }
 
   incrementQuantity() {
@@ -29,8 +35,8 @@ class WorkInfoForm extends Component {
   render() {
     const { keys } = this.state;
 
-    const form = (
-      <form>
+    const form = (id) => (
+      <form data-id={id}>
         <label htmlFor="work-title">
           Title:
           <input type="text" id="work-title" />
@@ -47,7 +53,7 @@ class WorkInfoForm extends Component {
           To:
           <input type="date" id="work-end-date" />
         </label>
-        <button type="button" onClick={WorkInfoForm.removeForm}>Delete</button>
+        <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
     );
 
@@ -55,7 +61,7 @@ class WorkInfoForm extends Component {
       <div className="work-info-form">
         <h2>Work </h2>
         <button type="submit" onClick={this.incrementQuantity}>Add Work</button>
-        {keys.map((el) => <div key={el.id}>{form}</div>)}
+        {keys.map((el) => <div key={el.id}>{form(el.id)}</div>)}
       </div>
     );
   }

@@ -4,23 +4,32 @@ import React, { Component } from "react";
 const uniqueId = () => Math.floor(Math.random() * Date.now());
 
 class EducationInfoForm extends Component {
-  static removeForm(event) {
-    event.target.parentNode.remove();
-  }
-
   constructor(props) {
     super(props);
 
+    //  this.educationInfoData = [];
+
     this.state = {
-      // data: [],
       keys: [],
     };
 
+    this.removeForm = this.removeForm.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
+  }
+
+  removeForm(event) {
+    const id = event.target.parentNode.getAttribute("data-id");
+    const { keys } = this.state;
+    const newKeys = keys.filter((el) => el.id !== Number(id));
+
+    this.setState({
+      keys: newKeys,
+    });
   }
 
   incrementQuantity() {
     const { keys } = this.state;
+
     this.setState({
       keys: keys.concat({ id: uniqueId() }),
     });
@@ -29,8 +38,8 @@ class EducationInfoForm extends Component {
   render() {
     const { keys } = this.state;
 
-    const form = (
-      <form>
+    const form = (id) => (
+      <form data-id={id}>
         <label htmlFor="education-title">
           Title:
           <input type="text" id="education-title" />
@@ -47,7 +56,7 @@ class EducationInfoForm extends Component {
           To:
           <input type="date" id="education-end-date" />
         </label>
-        <button type="button" onClick={EducationInfoForm.removeForm}>Delete</button>
+        <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
     );
 
@@ -55,7 +64,7 @@ class EducationInfoForm extends Component {
       <div>
         <h2>Education</h2>
         <button type="button" onClick={this.incrementQuantity}>Add Education</button>
-        {keys.map((el) => <div key={el.id}>{form}</div>)}
+        {keys.map((el) => <div key={el.id}>{form(el.id)}</div>)}
       </div>
     );
   }
