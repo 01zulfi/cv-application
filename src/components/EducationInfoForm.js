@@ -8,7 +8,7 @@ class EducationInfoForm extends Component {
     super(props);
 
     this.state = {
-      keys: [],
+      data: [],
     };
 
     this.removeForm = this.removeForm.bind(this);
@@ -19,31 +19,31 @@ class EducationInfoForm extends Component {
   removeForm(event) {
     const { dataHandler } = this.props;
     const id = event.target.parentNode.getAttribute("data-id");
-    const { keys } = this.state;
-    const newKeys = keys.filter((el) => el.id !== Number(id));
+    const { data } = this.state;
+    const newData = data.filter((el) => el.id !== Number(id));
 
-    dataHandler("education", newKeys);
+    dataHandler("education", newData);
     this.setState({
-      keys: newKeys,
+      data: newData,
     });
   }
 
   incrementQuantity() {
-    const { keys } = this.state;
+    const { data } = this.state;
 
     this.setState({
-      keys: keys.concat({ id: uniqueId() }),
+      data: data.concat({ id: uniqueId() }),
     });
   }
 
   inputHandler(event) {
     const { dataHandler } = this.props;
     const id = Number(event.target.closest("form").getAttribute("data-id"));
-    const { keys } = this.state;
-    let newKeys = [];
+    const { data } = this.state;
+    let newData = [];
 
     if (event.target.id === "education-title") {
-      newKeys = keys.map((el) => {
+      newData = data.map((el) => {
         const newObj = { ...el };
         if (newObj.id === id) {
           newObj.educationTitle = event.target.value;
@@ -52,7 +52,7 @@ class EducationInfoForm extends Component {
       });
     }
     if (event.target.id === "education-institute") {
-      newKeys = keys.map((el) => {
+      newData = data.map((el) => {
         const newObj = { ...el };
         if (newObj.id === id) {
           newObj.educationInstitute = event.target.value;
@@ -61,7 +61,7 @@ class EducationInfoForm extends Component {
       });
     }
     if (event.target.id === "education-start-date") {
-      newKeys = keys.map((el) => {
+      newData = data.map((el) => {
         const newObj = { ...el };
         if (newObj.id === id) {
           newObj.educationStartDate = event.target.value;
@@ -70,7 +70,7 @@ class EducationInfoForm extends Component {
       });
     }
     if (event.target.id === "education-end-date") {
-      newKeys = keys.map((el) => {
+      newData = data.map((el) => {
         const newObj = { ...el };
         if (newObj.id === id) {
           newObj.educationEndDate = event.target.value;
@@ -79,14 +79,14 @@ class EducationInfoForm extends Component {
       });
     }
 
-    dataHandler("education", newKeys);
+    dataHandler("education", newData);
     this.setState({
-      keys: newKeys,
+      data: newData,
     });
   }
 
   render() {
-    const { keys } = this.state;
+    const { data } = this.state;
 
     const form = (id) => (
       <form data-id={id}>
@@ -114,7 +114,7 @@ class EducationInfoForm extends Component {
       <div>
         <h2>Education</h2>
         <button type="button" onClick={this.incrementQuantity}>Add Education</button>
-        {keys.map((el) => <div key={el.id}>{form(el.id)}</div>)}
+        {data.map((el) => <div key={el.id}>{form(el.id)}</div>)}
       </div>
     );
   }

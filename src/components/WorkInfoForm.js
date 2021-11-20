@@ -8,7 +8,7 @@ class WorkInfoForm extends Component {
     super(props);
 
     this.state = {
-      keys: [],
+      data: [],
     };
 
     this.removeForm = this.removeForm.bind(this);
@@ -17,23 +17,23 @@ class WorkInfoForm extends Component {
 
   removeForm(event) {
     const id = event.target.parentNode.getAttribute("data-id");
-    const { keys } = this.state;
-    const newKeys = keys.filter((el) => el.id !== Number(id));
+    const { data } = this.state;
+    const newData = data.filter((el) => el.id !== Number(id));
 
     this.setState({
-      keys: newKeys,
+      data: newData,
     });
   }
 
   incrementQuantity() {
-    const { keys } = this.state;
+    const { data } = this.state;
     this.setState({
-      keys: keys.concat({ id: uniqueId() }),
+      data: data.concat({ id: uniqueId() }),
     });
   }
 
   render() {
-    const { keys } = this.state;
+    const { data } = this.state;
 
     const form = (id) => (
       <form data-id={id}>
@@ -61,7 +61,7 @@ class WorkInfoForm extends Component {
       <div className="work-info-form">
         <h2>Work </h2>
         <button type="submit" onClick={this.incrementQuantity}>Add Work</button>
-        {keys.map((el) => <div key={el.id}>{form(el.id)}</div>)}
+        {data.map((el) => <div key={el.id}>{form(el.id)}</div>)}
       </div>
     );
   }
