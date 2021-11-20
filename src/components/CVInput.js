@@ -5,13 +5,6 @@ import EducationInfoForm from "./EducationInfoForm";
 import WorkInfoForm from "./WorkInfoForm";
 
 class CVInput extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-    };
-  }
-
   render() {
     const { style, dataHandler } = this.props;
 
