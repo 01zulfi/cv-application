@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import GeneralInfoForm from "./GeneralInfoForm";
 import EducationInfoForm from "./EducationInfoForm";
 import WorkInfoForm from "./WorkInfoForm";
+import "../styles/CVInput.css";
 
 class CVInput extends Component {
   render() {
     const { style, dataHandler } = this.props;
 
     return (
-      <div className="CVInput" style={style}>
+      <div className="CV-input" style={style}>
         <GeneralInfoForm dataHandler={dataHandler} />
         <EducationInfoForm dataHandler={dataHandler} />
         <WorkInfoForm dataHandler={dataHandler} />

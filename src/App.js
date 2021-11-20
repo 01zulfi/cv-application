@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      CVInputStyle: { display: "block" },
+      CVInputStyle: { display: "flex" },
       CVDisplayStyle: { display: "none" },
       CVData: { general: {}, education: [], work: [] },
     };
@@ -20,7 +20,7 @@ class App extends Component {
 
   editButtonEventHandler() {
     this.setState({
-      CVInputStyle: { display: "block" },
+      CVInputStyle: { display: "flex" },
       CVDisplayStyle: { display: "none" },
     });
   }
@@ -28,7 +28,7 @@ class App extends Component {
   previewButtonEventHandler() {
     this.setState({
       CVInputStyle: { display: "none" },
-      CVDisplayStyle: { display: "block" },
+      CVDisplayStyle: { display: "flex" },
     });
   }
 
@@ -57,7 +57,7 @@ class App extends Component {
     const { CVInputStyle, CVDisplayStyle, CVData } = this.state;
 
     return (
-      <div>
+      <div className="App">
         <h1>CV Application</h1>
         <div className="buttons">
           <button
