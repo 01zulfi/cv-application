@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "../styles/GeneralInfoForm.css";
 
 class GeneralInfoForm extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class GeneralInfoForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="general-info-form-div">
         <h2>
           General
         </h2>
