@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "../styles/WorkInfoForm.css";
 
 const uniqueId = () => Math.floor(Math.random() * Date.now());
 
@@ -137,14 +138,16 @@ class WorkInfoForm extends Component {
         <input type="date" id="work-start-date" onChange={this.inputHandler} />
         To:
         <input type="date" id="work-end-date" onChange={this.inputHandler} />
-        Present
-        <input type="checkbox" id="is-present" onChange={this.isPresentHandler} />
+        <div className="is-present-checkbox">
+          Present
+          <input type="checkbox" id="is-present" onChange={this.isPresentHandler} />
+        </div>
         <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
     );
 
     return (
-      <div className="work-info-form">
+      <div className="work-info-form-div">
         <h2>Work </h2>
         <button type="submit" onClick={this.incrementQuantity}>Add Work</button>
         {data.map((el) => <div key={el.id}>{form(el.id)}</div>)}

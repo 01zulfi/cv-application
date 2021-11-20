@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "../styles/EducationInfoForm.css";
 
 const uniqueId = () => Math.floor(Math.random() * Date.now());
 
@@ -138,14 +139,16 @@ class EducationInfoForm extends Component {
         <input type="date" id="education-start-date" onChange={this.inputHandler} />
         To:
         <input type="date" id="education-end-date" onChange={this.inputHandler} />
-        Present
-        <input type="checkbox" id="is-present" onChange={this.isPresentHandler} />
+        <div className="is-present-checkbox">
+          Present
+          <input type="checkbox" id="is-present" onChange={this.isPresentHandler} />
+        </div>
         <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
     );
 
     return (
-      <div>
+      <div className="education-info-form-div">
         <h2>Education</h2>
         <button type="button" onClick={this.incrementQuantity}>Add Education</button>
         {data.map((el) => <div key={el.id}>{form(el.id)}</div>)}
