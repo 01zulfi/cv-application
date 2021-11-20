@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CVInput from "./components/CVInput";
 import CVDisplay from "./components/CVDisplay";
+import "./styles/App.css";
 
 class App extends Component {
   constructor(props) {
@@ -58,20 +59,22 @@ class App extends Component {
     return (
       <div>
         <h1>CV Application</h1>
-        <button
-          type="button"
-          className="edit"
-          onClick={this.editButtonEventHandler}
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          className="preview"
-          onClick={this.previewButtonEventHandler}
-        >
-          Preview
-        </button>
+        <div className="buttons">
+          <button
+            type="button"
+            className="edit"
+            onClick={this.editButtonEventHandler}
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            className="preview"
+            onClick={this.previewButtonEventHandler}
+          >
+            Preview
+          </button>
+        </div>
         <CVInput dataHandler={this.dataHandler} style={CVInputStyle} />
         <CVDisplay style={CVDisplayStyle} CVData={CVData} />
       </div>
