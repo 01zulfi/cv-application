@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const uniqueId = () => Math.floor(Math.random() * Date.now());
 
@@ -13,13 +13,16 @@ class WorkInfoForm extends Component {
 
     this.removeForm = this.removeForm.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.inputHandler = this.inputHandler.bind(this);
   }
 
   removeForm(event) {
+    const { dataHandler } = this.props;
     const id = event.target.parentNode.getAttribute("data-id");
     const { data } = this.state;
     const newData = data.filter((el) => el.id !== Number(id));
 
+    dataHandler("work", newData);
     this.setState({
       data: newData,
     });
@@ -32,6 +35,55 @@ class WorkInfoForm extends Component {
     });
   }
 
+  inputHandler(event) {
+    const { dataHandler } = this.props;
+    const id = Number(event.target.closest("form").getAttribute("data-id"));
+    const { data } = this.state;
+    let newData = [];
+
+    if (event.target.id === "work-title") {
+      newData = data.map((el) => {
+        const newObj = { ...el };
+        if (newObj.id === id) {
+          newObj.workTitle = event.target.value;
+        }
+        return newObj;
+      });
+    }
+    if (event.target.id === "work-company") {
+      newData = data.map((el) => {
+        const newObj = { ...el };
+        if (newObj.id === id) {
+          newObj.workCompany = event.target.value;
+        }
+        return newObj;
+      });
+    }
+    if (event.target.id === "work-start-date") {
+      newData = data.map((el) => {
+        const newObj = { ...el };
+        if (newObj.id === id) {
+          newObj.workStartDate = event.target.value;
+        }
+        return newObj;
+      });
+    }
+    if (event.target.id === "work-end-date") {
+      newData = data.map((el) => {
+        const newObj = { ...el };
+        if (newObj.id === id) {
+          newObj.workEndDate = event.target.value;
+        }
+        return newObj;
+      });
+    }
+
+    dataHandler("work", newData);
+    this.setState({
+      data: newData,
+    });
+  }
+
   render() {
     const { data } = this.state;
 
@@ -39,19 +91,19 @@ class WorkInfoForm extends Component {
       <form data-id={id}>
         <label htmlFor="work-title">
           Title:
-          <input type="text" id="work-title" />
+          <input type="text" id="work-title" onChange={this.inputHandler} />
         </label>
         <label htmlFor="work-company">
           Company:
-          <input type="text" id="work-company" />
+          <input type="text" id="work-company" onChange={this.inputHandler} />
         </label>
         <label htmlFor="work-start-date">
           From:
-          <input type="date" id="work-start-date" />
+          <input type="date" id="work-start-date" onChange={this.inputHandler} />
         </label>
         <label htmlFor="work-end-date">
           To:
-          <input type="date" id="work-end-date" />
+          <input type="date" id="work-end-date" onChange={this.inputHandler} />
         </label>
         <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
@@ -68,9 +120,11 @@ class WorkInfoForm extends Component {
 }
 
 WorkInfoForm.propTypes = {
+  dataHandler: PropTypes.func,
 };
 
 WorkInfoForm.defaultProps = {
+  dataHandler: () => {},
 };
 
 export default WorkInfoForm;
