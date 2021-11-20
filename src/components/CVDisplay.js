@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 class CVDisplay extends Component {
   render() {
     const { style, CVData } = this.props;
-    const { general, education } = CVData;
+    const { general, education, work } = CVData;
 
     const educationDiv = (data) => (
       <div key={data.id} className="education-info-display">
@@ -12,6 +12,15 @@ class CVDisplay extends Component {
         <p>{data.educationInstitute}</p>
         <p>{data.educationStartDate}</p>
         <p>{data.educationEndDate}</p>
+      </div>
+    );
+
+    const workDiv = (data) => (
+      <div key={data.id} className="work-info-display">
+        <p>{data.workTitle}</p>
+        <p>{data.workCompany}</p>
+        <p>{data.workStartDate}</p>
+        <p>{data.workEndDate}</p>
       </div>
     );
 
@@ -27,6 +36,7 @@ class CVDisplay extends Component {
           <p>{general.phone}</p>
         </div>
         {education.map((el) => educationDiv(el))}
+        {work.map((el) => workDiv(el))}
       </div>
     );
   }
