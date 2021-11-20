@@ -104,26 +104,16 @@ class EducationInfoForm extends Component {
 
     const form = (id) => (
       <form data-id={id}>
-        <label htmlFor="education-title">
-          Title:
-          <input type="text" id="education-title" onChange={this.inputHandler} />
-        </label>
-        <label htmlFor="education-institute">
-          Institute:
-          <input type="text" id="education-institute" onChange={this.inputHandler} />
-        </label>
-        <label htmlFor="education-start-date">
-          From:
-          <input type="date" id="education-start-date" onChange={this.inputHandler} />
-        </label>
-        <label htmlFor="education-end-date">
-          To:
-          <input type="date" id="education-end-date" onChange={this.inputHandler} />
-        </label>
-        <label htmlFor="is-present">
-          Present
-          <input type="checkbox" id="is-present" onChange={this.isPresentHandler} />
-        </label>
+        Title:
+        <input type="text" id="education-title" onChange={this.inputHandler} />
+        Institute:
+        <input type="text" id="education-institute" onChange={this.inputHandler} />
+        From:
+        <input type="date" id="education-start-date" onChange={this.inputHandler} />
+        To:
+        <input type="date" id="education-end-date" onChange={this.inputHandler} />
+        Present
+        <input type="checkbox" id="is-present" onChange={this.isPresentHandler} />
         <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
     );

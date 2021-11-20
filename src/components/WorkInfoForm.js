@@ -89,22 +89,14 @@ class WorkInfoForm extends Component {
 
     const form = (id) => (
       <form data-id={id}>
-        <label htmlFor="work-title">
-          Title:
-          <input type="text" id="work-title" onChange={this.inputHandler} />
-        </label>
-        <label htmlFor="work-company">
-          Company:
-          <input type="text" id="work-company" onChange={this.inputHandler} />
-        </label>
-        <label htmlFor="work-start-date">
-          From:
-          <input type="date" id="work-start-date" onChange={this.inputHandler} />
-        </label>
-        <label htmlFor="work-end-date">
-          To:
-          <input type="date" id="work-end-date" onChange={this.inputHandler} />
-        </label>
+        Title:
+        <input type="text" id="work-title" onChange={this.inputHandler} />
+        Company:
+        <input type="text" id="work-company" onChange={this.inputHandler} />
+        From:
+        <input type="date" id="work-start-date" onChange={this.inputHandler} />
+        To:
+        <input type="date" id="work-end-date" onChange={this.inputHandler} />
         <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
     );
