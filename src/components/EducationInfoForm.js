@@ -88,15 +88,41 @@ class EducationInfoForm extends Component {
 
   isPresentHandler(event) {
     if (event.target.id !== "is-present") return;
+
     const { checked } = event.target;
     const form = event.target.closest("form");
-    // const id = Number(form.getAttribute("data-id"))
+    const id = Number(form.getAttribute("data-id"));
+    const { data } = this.state;
+    let newData = [];
+    const { dataHandler } = this.props;
     const endDateInput = form.querySelector("#education-end-date");
+
     if (!checked) {
       endDateInput.removeAttribute("disabled");
+
+      newData = data.map((el) => {
+        const newObj = { ...el };
+        if (newObj.id === id) {
+          newObj.educationEndDate = endDateInput.value || "";
+        }
+        return newObj;
+      });
     } else {
       endDateInput.setAttribute("disabled", "true");
+
+      newData = data.map((el) => {
+        const newObj = { ...el };
+        if (newObj.id === id) {
+          newObj.educationEndDate = "Present";
+        }
+        return newObj;
+      });
     }
+
+    dataHandler("education", newData);
+    this.setState({
+      data: newData,
+    });
   }
 
   render() {
