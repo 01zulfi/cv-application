@@ -14,6 +14,7 @@ class EducationInfoForm extends Component {
     this.removeForm = this.removeForm.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
     this.inputHandler = this.inputHandler.bind(this);
+    this.isPresentHandler = this.isPresentHandler.bind(this);
   }
 
   removeForm(event) {
@@ -85,6 +86,19 @@ class EducationInfoForm extends Component {
     });
   }
 
+  isPresentHandler(event) {
+    if (event.target.id !== "is-present") return;
+    const { checked } = event.target;
+    const form = event.target.closest("form");
+    // const id = Number(form.getAttribute("data-id"))
+    const endDateInput = form.querySelector("#education-end-date");
+    if (!checked) {
+      endDateInput.removeAttribute("disabled");
+    } else {
+      endDateInput.setAttribute("disabled", "true");
+    }
+  }
+
   render() {
     const { data } = this.state;
 
@@ -105,6 +119,10 @@ class EducationInfoForm extends Component {
         <label htmlFor="education-end-date">
           To:
           <input type="date" id="education-end-date" onChange={this.inputHandler} />
+        </label>
+        <label htmlFor="is-present">
+          Present
+          <input type="checkbox" id="is-present" onChange={this.isPresentHandler} />
         </label>
         <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
