@@ -79,6 +79,15 @@ class WorkInfoForm extends Component {
         return newObj;
       });
     }
+    if (event.target.id === "work-responsibilites") {
+      newData = data.map((el) => {
+        const newObj = { ...el };
+        if (newObj.id === id) {
+          newObj.workResponsibilities = event.target.value;
+        }
+        return newObj;
+      });
+    }
 
     dataHandler("work", newData);
     this.setState({
@@ -142,6 +151,8 @@ class WorkInfoForm extends Component {
           Present
           <input type="checkbox" id="is-present" onChange={this.isPresentHandler} />
         </div>
+        Responsibilites:
+        <textarea type="text" id="work-responsibilites" onChange={this.inputHandler} />
         <button type="button" onClick={this.removeForm}>Delete</button>
       </form>
     );

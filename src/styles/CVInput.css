@@ -9,5 +9,6 @@ div.CV-input {
 @media screen and (min-width: 768px) {
     div.CV-input {
         align-items: center;
+        width: 65%;
     }
 }

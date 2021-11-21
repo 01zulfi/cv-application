@@ -41,10 +41,18 @@ class CVDisplay extends Component {
 
     const workDiv = (data) => (
       <div key={data.id} className="work-info-display">
-        <p>{data.workTitle}</p>
+        <p className="work-title-display">{data.workTitle}</p>
         <p>{data.workCompany}</p>
-        <p>{data.workStartDate}</p>
-        <p>{data.workEndDate}</p>
+        <p className="work-time">
+          From:
+          {data.workStartDate}
+          {" "}
+          {" "}
+          To:
+          {" "}
+          {data.workEndDate}
+        </p>
+        <p className="work-responsibilities">{data.workResponsibilities}</p>
       </div>
     );
 
@@ -59,6 +67,7 @@ class CVDisplay extends Component {
           </div>
           <div className="vertical-line" />
           <div className="work-section">
+            <h2>Work</h2>
             {work.map((el) => workDiv(el))}
           </div>
         </div>

@@ -58,37 +58,47 @@ hr {
     border: 0;
 }
 
-.education-section {
+.education-section, .work-section {
     display: flex;
     flex-direction: column;
     width: 29%;
     gap: 10px;
 }
 
-.education-info-display {
+.work-section {
+    flex: 1
+}
+
+.education-info-display, .work-info-display {
     display: flex;
     flex-direction: column;
 }
 
-.education-info-display p {
+.education-info-display p, .work-info-display p {
     display: flex;
     justify-content: center;    
 }
 
-.education-section h2 {
+.education-section h2,
+.work-section h2 {
     font-size: 1.2em;
     text-align: center;
-    color: gray
+    color: rgba(165, 42, 42, 0.5)
 }
 
-.education-info-display .education-qualification-display {
+.education-info-display .education-qualification-display,
+.work-info-display .work-title-display {
     background-color: rgba(147, 147, 218, 0.5);
 }
 
-.education-info-display .education-time {
+.education-info-display .education-time,
+.work-info-display .work-time {
     text-align: center;
     opacity: 0.9;
     font-style: italic;
     font-size: 0.8em;
 }
 
+.work-responsibilities {
+    font-style: italic;
+}
