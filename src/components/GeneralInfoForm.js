@@ -7,7 +7,12 @@ class GeneralInfoForm extends Component {
     super(props);
 
     this.generalInfoData = {
-      firstName: "", lastName: "", email: "", phone: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      title: "",
+      objective: "",
     };
 
     this.inputHandler = this.inputHandler.bind(this);
@@ -28,6 +33,13 @@ class GeneralInfoForm extends Component {
     if (event.target.id === "phone-number-input") {
       this.generalInfoData.phone = event.target.value;
     }
+    if (event.target.id === "job-title-input") {
+      this.generalInfoData.title = event.target.value;
+    }
+    if (event.target.id === "objective-input") {
+      this.generalInfoData.objective = event.target.value;
+    }
+
     dataHandler("general", this.generalInfoData);
   }
 
@@ -53,6 +65,14 @@ class GeneralInfoForm extends Component {
           <label htmlFor="phone-number-input">
             Phone Number:
             <input type="text" id="phone-number-input" onChange={this.inputHandler} />
+          </label>
+          <label htmlFor="job-title-input">
+            Title:
+            <input type="text" id="job-title-input" onChange={this.inputHandler} />
+          </label>
+          <label htmlFor="objective-input">
+            Objective:
+            <textarea type="text" id="objective-input" onChange={this.inputHandler} />
           </label>
         </form>
       </div>
