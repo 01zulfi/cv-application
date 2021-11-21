@@ -34,8 +34,61 @@ hr {
     margin-bottom: 5px;
 }
 
+.general-info-display .contact-details-div {
+    width: 100%;
+    background-color: rgba(147, 147, 218, 0.9);
+    border-left: 0;
+    border-right: 0;
+    margin: 5px;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.CV-body-div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+}
+
+.CV-body-div .vertical-line {
+    background-color: rgb(165, 42, 42, 0.5);
+    width: 5px;
+    border: 0;
+}
+
+.education-section {
+    display: flex;
+    flex-direction: column;
+    width: 29%;
+    gap: 10px;
+}
+
 .education-info-display {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(147, 147, 218, 0.5)
 }
+
+.education-info-display p {
+    display: flex;
+    justify-content: center;    
+}
+
+.education-section h2 {
+    font-size: 1.2em;
+    text-align: center;
+    color: gray
+}
+
+.education-info-display .education-qualification-display {
+    background-color: rgba(147, 147, 218, 0.5);
+}
+
+.education-info-display .education-time {
+    text-align: center;
+    opacity: 0.9;
+    font-style: italic;
+    font-size: 0.8em;
+}
+

@@ -15,18 +15,27 @@ class CVDisplay extends Component {
           {general.lastName}
         </p>
         <p className="title-display">{general.title}</p>
-        <p>{general.email}</p>
-        <p>{general.phone}</p>
+        <div className="contact-details-div">
+          <p>{general.email}</p>
+          <p>{general.phone}</p>
+        </div>
         <p>{general.objective}</p>
       </div>
     );
 
     const educationDiv = (data) => (
       <div key={data.id} className="education-info-display">
-        <p>{data.educationQualification}</p>
+        <p className="education-qualification-display">{data.educationQualification}</p>
         <p>{data.educationInstitute}</p>
-        <p>{data.educationStartDate}</p>
-        <p>{data.educationEndDate}</p>
+        <p className="education-time">
+          From:
+          {data.educationStartDate}
+          {" "}
+          {" "}
+          To:
+          {" "}
+          {data.educationEndDate}
+        </p>
       </div>
     );
 
@@ -43,8 +52,16 @@ class CVDisplay extends Component {
       <div style={style} className="CV-display-div">
         {generalDiv}
         <hr />
-        {education.map((el) => educationDiv(el))}
-        {work.map((el) => workDiv(el))}
+        <div className="CV-body-div">
+          <div className="education-section">
+            <h2>Education</h2>
+            {education.map((el) => educationDiv(el))}
+          </div>
+          <div className="vertical-line" />
+          <div className="work-section">
+            {work.map((el) => workDiv(el))}
+          </div>
+        </div>
       </div>
     );
   }
