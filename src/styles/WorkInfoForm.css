@@ -34,3 +34,13 @@ div.work-info-form-div {
     width: 45%;
     justify-content: space-around;
 }
+
+@media screen and (min-width: 768px) {
+    .work-info-form-div {
+        width: 90%;
+    }
+    .work-info-form-div form {
+        flex-direction: row;
+        align-items: center;
+    }
+}

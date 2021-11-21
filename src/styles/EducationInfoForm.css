@@ -34,3 +34,13 @@ div.education-info-form-div {
     width: 45%;
     justify-content: space-around;
 }
+
+@media screen and (min-width: 768px) {
+    .education-info-form-div {
+        width: 90%;
+    }
+    .education-info-form-div form {
+        flex-direction: row;
+        align-items: center;
+    }
+}
