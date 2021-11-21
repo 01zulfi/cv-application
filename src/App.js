@@ -10,7 +10,9 @@ class App extends Component {
     this.state = {
       CVInputStyle: { display: "flex" },
       CVDisplayStyle: { display: "none" },
-      CVData: { general: {}, education: [], work: [] },
+      CVData: {
+        general: {}, education: [], work: [], skills: [],
+      },
     };
 
     this.editButtonEventHandler = this.editButtonEventHandler.bind(this);
@@ -34,7 +36,9 @@ class App extends Component {
 
   dataHandler(section, data) {
     const { CVData } = this.state;
-    let { general, education, work } = CVData;
+    let {
+      general, education, work, skills,
+    } = CVData;
 
     if (section === "general") {
       general = data;
@@ -45,10 +49,13 @@ class App extends Component {
     if (section === "work") {
       work = data;
     }
+    if (section === "skills") {
+      skills = data;
+    }
 
     this.setState({
       CVData: {
-        general, education, work,
+        general, education, work, skills,
       },
     });
   }

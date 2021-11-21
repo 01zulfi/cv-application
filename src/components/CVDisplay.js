@@ -5,7 +5,9 @@ import "../styles/CVDisplay.css";
 class CVDisplay extends Component {
   render() {
     const { style, CVData } = this.props;
-    const { general, education, work } = CVData;
+    const {
+      general, education, work, skills,
+    } = CVData;
 
     const generalDiv = (
       <div className="general-info-display">
@@ -20,6 +22,12 @@ class CVDisplay extends Component {
           <p>{general.phone}</p>
         </div>
         <p>{general.objective}</p>
+      </div>
+    );
+
+    const skillsDiv = (data) => (
+      <div key={data.id} className="skills-info-display">
+        <p className="skill-display">{data.skill}</p>
       </div>
     );
 
@@ -61,7 +69,9 @@ class CVDisplay extends Component {
         {generalDiv}
         <hr />
         <div className="CV-body-div">
-          <div className="education-section">
+          <div className="education-and-skills-section">
+            <h2>Skills</h2>
+            {skills.map((el) => skillsDiv(el))}
             <h2>Education</h2>
             {education.map((el) => educationDiv(el))}
           </div>
