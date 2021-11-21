@@ -1,0 +1,41 @@
+div.CV-display-div {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 55%;
+    background-color: white;
+    margin-top: 20px
+}
+
+.general-info-display {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(147, 147, 218, 0.8);
+    padding: 10px;
+}
+
+hr {
+    background-color: rgb(165, 42, 42, 0.5);
+    padding-top: 5px;
+    border: 0;
+    width: 100%;
+}
+
+.general-info-display .name-display {
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.general-info-display .title-display{
+    font-weight: bolder;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.education-info-display {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(147, 147, 218, 0.5)
+}

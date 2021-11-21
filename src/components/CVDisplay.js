@@ -1,14 +1,29 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "../styles/CVDisplay.css";
 
 class CVDisplay extends Component {
   render() {
     const { style, CVData } = this.props;
     const { general, education, work } = CVData;
 
+    const generalDiv = (
+      <div className="general-info-display">
+        <p className="name-display">
+          {general.firstName}
+          {" "}
+          {general.lastName}
+        </p>
+        <p className="title-display">{general.title}</p>
+        <p>{general.email}</p>
+        <p>{general.phone}</p>
+        <p>{general.objective}</p>
+      </div>
+    );
+
     const educationDiv = (data) => (
       <div key={data.id} className="education-info-display">
-        <p>{data.educationTitle}</p>
+        <p>{data.educationQualification}</p>
         <p>{data.educationInstitute}</p>
         <p>{data.educationStartDate}</p>
         <p>{data.educationEndDate}</p>
@@ -25,16 +40,9 @@ class CVDisplay extends Component {
     );
 
     return (
-      <div style={style}>
-        <div className="general-info-display">
-          <p>
-            {general.firstName}
-            {" "}
-            {general.lastName}
-          </p>
-          <p>{general.email}</p>
-          <p>{general.phone}</p>
-        </div>
+      <div style={style} className="CV-display-div">
+        {generalDiv}
+        <hr />
         {education.map((el) => educationDiv(el))}
         {work.map((el) => workDiv(el))}
       </div>

@@ -44,11 +44,11 @@ class EducationInfoForm extends Component {
     const { data } = this.state;
     let newData = [];
 
-    if (event.target.id === "education-title") {
+    if (event.target.id === "education-qualification") {
       newData = data.map((el) => {
         const newObj = { ...el };
         if (newObj.id === id) {
-          newObj.educationTitle = event.target.value;
+          newObj.educationQualification = event.target.value;
         }
         return newObj;
       });
@@ -131,8 +131,8 @@ class EducationInfoForm extends Component {
 
     const form = (id) => (
       <form data-id={id}>
-        Title:
-        <input type="text" id="education-title" onChange={this.inputHandler} />
+        Qualification:
+        <input type="text" id="education-qualification" onChange={this.inputHandler} />
         Institute:
         <input type="text" id="education-institute" onChange={this.inputHandler} />
         From:
