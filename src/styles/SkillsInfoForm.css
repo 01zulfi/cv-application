@@ -1,0 +1,38 @@
+div.skills-info-form-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.skills-info-form-div form {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+}
+.skills-info-form-div form input {
+    margin-left: auto;
+    border-radius: 5px;
+    background-color: rgb(0,0,0,0.1);
+    border: 0;
+    padding: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    div.skills-info-form-div {
+        flex-direction: colum;
+        width: 90%;
+    }
+    .skills-info-form-div form {
+        flex-direction: column;
+        align-items: center;
+    }
+    .skills-info-form-div form input {
+        margin-left: 0;
+    }
+}

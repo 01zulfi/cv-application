@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "../styles/SkillsInfoForm.css";
 
 const uniqueId = () => Math.floor(Math.random() * Date.now());
 
@@ -69,7 +70,7 @@ class SkillsInfoForm extends Component {
     );
 
     return (
-      <div className="skills-info-form-display">
+      <div className="skills-info-form-div">
         <h2>Skills</h2>
         <button type="button" onClick={this.incrementQuantity}>Add Skill</button>
         {data.map((el) => form(el.id))}
