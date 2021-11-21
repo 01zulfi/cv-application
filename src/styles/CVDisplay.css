@@ -5,7 +5,8 @@ div.CV-display-div {
     padding: 10px;
     width: 55%;
     background-color: white;
-    margin-top: 20px
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .general-info-display {
@@ -58,7 +59,7 @@ hr {
     border: 0;
 }
 
-.education-section, .work-section {
+.education-and-skills-section, .work-section {
     display: flex;
     flex-direction: column;
     width: 29%;
@@ -69,17 +70,19 @@ hr {
     flex: 1
 }
 
-.education-info-display, .work-info-display {
+.education-info-display, .work-info-display, 
+.skills-info-display {
     display: flex;
     flex-direction: column;
 }
 
-.education-info-display p, .work-info-display p {
+.education-info-display p, .work-info-display p,
+.skills-info-display p {
     display: flex;
     justify-content: center;    
 }
 
-.education-section h2,
+.education-and-skills-section h2,
 .work-section h2 {
     font-size: 1.2em;
     text-align: center;

@@ -72,6 +72,7 @@ class CVDisplay extends Component {
           <div className="education-and-skills-section">
             <h2>Skills</h2>
             {skills.map((el) => skillsDiv(el))}
+            <hr />
             <h2>Education</h2>
             {education.map((el) => educationDiv(el))}
           </div>
