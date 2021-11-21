@@ -13,6 +13,7 @@ div.work-info-form-div {
     flex-direction: column;
     width: 95%;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     border: 1px solid rgba(0,0,0,0.3);
     border-radius: 10px;
@@ -20,8 +21,7 @@ div.work-info-form-div {
 }
 
 .work-info-form-div form  input {
-    margin-left: auto;
-    width: 95%;
+    width: 97%;
     border-radius: 5px;
     background-color: rgb(0,0,0,0.1);
     border: 0;
@@ -31,7 +31,7 @@ div.work-info-form-div {
 .work-info-form-div .is-present-checkbox {
     display: flex;
     margin: 5px;
-    width: 45%;
+    width: 15%;
     justify-content: space-around;
 }
 
