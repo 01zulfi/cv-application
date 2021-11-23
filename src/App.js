@@ -1,41 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import CVInput from "./components/CVInput";
 import CVDisplay from "./components/CVDisplay";
 import "./styles/App.css";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const App = function () {
+  const [CVInputStyle, setCVInputStyle] = useState({ display: "flex" });
+  const [CVDisplayStyle, setCVDisplayStyle] = useState({ display: "none" });
+  const [CVData, setCVData] = useState(
+    {
+      general: {}, education: [], work: [], skills: [],
+    },
+  );
 
-    this.state = {
-      CVInputStyle: { display: "flex" },
-      CVDisplayStyle: { display: "none" },
-      CVData: {
-        general: {}, education: [], work: [], skills: [],
-      },
-    };
+  const editButtonEventHandler = () => {
+    setCVInputStyle({ display: "flex" });
+    setCVDisplayStyle({ display: "none" });
+  };
 
-    this.editButtonEventHandler = this.editButtonEventHandler.bind(this);
-    this.previewButtonEventHandler = this.previewButtonEventHandler.bind(this);
-    this.dataHandler = this.dataHandler.bind(this);
-  }
+  const previewButtonEventHandler = () => {
+    setCVInputStyle({ display: "none" });
+    setCVDisplayStyle({ display: "flex" });
+  };
 
-  editButtonEventHandler() {
-    this.setState({
-      CVInputStyle: { display: "flex" },
-      CVDisplayStyle: { display: "none" },
-    });
-  }
-
-  previewButtonEventHandler() {
-    this.setState({
-      CVInputStyle: { display: "none" },
-      CVDisplayStyle: { display: "flex" },
-    });
-  }
-
-  dataHandler(section, data) {
-    const { CVData } = this.state;
+  const dataHandler = (section, data) => {
     let {
       general, education, work, skills,
     } = CVData;
@@ -53,40 +40,34 @@ class App extends Component {
       skills = data;
     }
 
-    this.setState({
-      CVData: {
-        general, education, work, skills,
-      },
+    setCVData({
+      general, education, work, skills,
     });
-  }
+  };
 
-  render() {
-    const { CVInputStyle, CVDisplayStyle, CVData } = this.state;
-
-    return (
-      <div className="App">
-        <h1>CV Application</h1>
-        <div className="buttons">
-          <button
-            type="button"
-            className="edit"
-            onClick={this.editButtonEventHandler}
-          >
-            Edit
-          </button>
-          <button
-            type="button"
-            className="preview"
-            onClick={this.previewButtonEventHandler}
-          >
-            Preview
-          </button>
-        </div>
-        <CVInput dataHandler={this.dataHandler} style={CVInputStyle} />
-        <CVDisplay style={CVDisplayStyle} CVData={CVData} />
+  return (
+    <div className="App">
+      <h1>CV Application</h1>
+      <div className="buttons">
+        <button
+          type="button"
+          className="edit"
+          onClick={editButtonEventHandler}
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          className="preview"
+          onClick={previewButtonEventHandler}
+        >
+          Preview
+        </button>
       </div>
-    );
-  }
-}
+      <CVInput dataHandler={dataHandler} style={CVInputStyle} />
+      <CVDisplay style={CVDisplayStyle} CVData={CVData} />
+    </div>
+  );
+};
 
 export default App;
