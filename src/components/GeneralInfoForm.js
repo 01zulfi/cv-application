@@ -1,84 +1,74 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "../styles/GeneralInfoForm.css";
 
-class GeneralInfoForm extends Component {
-  constructor(props) {
-    super(props);
+const GeneralInfoForm = function ({ dataHandler }) {
+  const generalInfoData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    title: "",
+    objective: "",
+  };
 
-    this.generalInfoData = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      title: "",
-      objective: "",
-    };
-
-    this.inputHandler = this.inputHandler.bind(this);
-  }
-
-  inputHandler(event) {
-    const { dataHandler } = this.props;
-
+  const inputHandler = (event) => {
     if (event.target.id === "first-name-input") {
-      this.generalInfoData.firstName = event.target.value;
+      generalInfoData.firstName = event.target.value;
     }
     if (event.target.id === "last-name-input") {
-      this.generalInfoData.lastName = event.target.value;
+      generalInfoData.lastName = event.target.value;
     }
     if (event.target.id === "email-input") {
-      this.generalInfoData.email = event.target.value;
+      generalInfoData.email = event.target.value;
     }
     if (event.target.id === "phone-number-input") {
-      this.generalInfoData.phone = event.target.value;
+      generalInfoData.phone = event.target.value;
     }
     if (event.target.id === "job-title-input") {
-      this.generalInfoData.title = event.target.value;
+      generalInfoData.title = event.target.value;
     }
     if (event.target.id === "objective-input") {
-      this.generalInfoData.objective = event.target.value;
+      generalInfoData.objective = event.target.value;
     }
 
-    dataHandler("general", this.generalInfoData);
-  }
+    dataHandler("general", generalInfoData);
+  };
 
-  render() {
-    return (
-      <div className="general-info-form-div">
-        <h2>
-          General
-        </h2>
-        <form>
-          <label htmlFor="first-name-input">
-            First Name:
-            <input type="text" id="first-name-input" onChange={this.inputHandler} />
-          </label>
-          <label htmlFor="last-name-input">
-            Last Name:
-            <input type="text" id="last-name-input" onChange={this.inputHandler} />
-          </label>
-          <label htmlFor="email-input">
-            Email:
-            <input type="email" id="email-input" onChange={this.inputHandler} />
-          </label>
-          <label htmlFor="phone-number-input">
-            Phone Number:
-            <input type="text" id="phone-number-input" onChange={this.inputHandler} />
-          </label>
-          <label htmlFor="job-title-input">
-            Title:
-            <input type="text" id="job-title-input" onChange={this.inputHandler} />
-          </label>
-          <label htmlFor="objective-input">
-            Objective:
-            <textarea type="text" id="objective-input" onChange={this.inputHandler} />
-          </label>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="general-info-form-div">
+      <h2>
+        General
+      </h2>
+      <form>
+        <label htmlFor="first-name-input">
+          First Name:
+          <input type="text" id="first-name-input" onChange={inputHandler} />
+        </label>
+        <label htmlFor="last-name-input">
+          Last Name:
+          <input type="text" id="last-name-input" onChange={inputHandler} />
+        </label>
+        <label htmlFor="email-input">
+          Email:
+          <input type="email" id="email-input" onChange={inputHandler} />
+        </label>
+        <label htmlFor="phone-number-input">
+          Phone Number:
+          <input type="text" id="phone-number-input" onChange={inputHandler} />
+        </label>
+        <label htmlFor="job-title-input">
+          Title:
+          <input type="text" id="job-title-input" onChange={inputHandler} />
+        </label>
+        <label htmlFor="objective-input">
+          Objective:
+          <textarea type="text" id="objective-input" onChange={inputHandler} />
+        </label>
+      </form>
+    </div>
+  );
+};
 
 GeneralInfoForm.propTypes = {
   dataHandler: PropTypes.func,
