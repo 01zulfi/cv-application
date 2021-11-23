@@ -1,50 +1,28 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "../styles/SkillsInfoForm.css";
 
 const uniqueId = () => Math.floor(Math.random() * Date.now());
 
-class SkillsInfoForm extends Component {
-  constructor(props) {
-    super(props);
+const SkillsInfoForm = function ({ dataHandler }) {
+  const [skills, setSkills] = useState([]);
 
-    this.state = {
-      data: [],
-    };
-
-    this.removeForm = this.removeForm.bind(this);
-    this.inputHandler = this.inputHandler.bind(this);
-    this.incrementQuantity = this.incrementQuantity.bind(this);
-  }
-
-  removeForm(event) {
-    const { dataHandler } = this.props;
+  const removeForm = (event) => {
     const id = event.target.parentNode.getAttribute("data-id");
-    const { data } = this.state;
-    const newData = data.filter((el) => el.id !== Number(id));
+    const newSkills = skills.filter((el) => el.id !== Number(id));
+    setSkills(newSkills);
+  };
 
-    dataHandler("skills", newData);
-    this.setState({
-      data: newData,
-    });
-  }
+  const incrementQuantity = () => {
+    setSkills(skills.concat({ id: uniqueId() }));
+  };
 
-  incrementQuantity() {
-    const { data } = this.state;
-
-    this.setState({
-      data: data.concat({ id: uniqueId() }),
-    });
-  }
-
-  inputHandler(event) {
-    const { dataHandler } = this.props;
+  const inputHandler = (event) => {
     const id = Number(event.target.closest("form").getAttribute("data-id"));
-    const { data } = this.state;
-    let newData = [];
+    let newSkills = [];
 
     if (event.target.id === "skills-input") {
-      newData = data.map((el) => {
+      newSkills = skills.map((el) => {
         const newObj = { ...el };
         if (newObj.id === id) {
           newObj.skill = event.target.value;
@@ -53,31 +31,28 @@ class SkillsInfoForm extends Component {
       });
     }
 
-    dataHandler("skills", newData);
-    this.setState({
-      data: newData,
-    });
-  }
+    setSkills(newSkills);
+  };
 
-  render() {
-    const { data } = this.state;
+  useEffect(() => {
+    dataHandler("skills", skills);
+  }, [skills]);
 
-    const form = (id) => (
-      <form key={id} data-id={id}>
-        <input type="text" id="skills-input" onChange={this.inputHandler} />
-        <button type="button" onClick={this.removeForm}>Delete</button>
-      </form>
-    );
+  const form = (id) => (
+    <form key={id} data-id={id}>
+      <input type="text" id="skills-input" onChange={inputHandler} />
+      <button type="button" onClick={removeForm}>Delete</button>
+    </form>
+  );
 
-    return (
-      <div className="skills-info-form-div">
-        <h2>Skills</h2>
-        <button type="button" onClick={this.incrementQuantity}>Add Skill</button>
-        {data.map((el) => form(el.id))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="skills-info-form-div">
+      <h2>Skills</h2>
+      <button type="button" onClick={incrementQuantity}>Add Skill</button>
+      {skills.map((el) => form(el.id))}
+    </div>
+  );
+};
 
 SkillsInfoForm.propTypes = {
   dataHandler: PropTypes.func,
@@ -86,4 +61,5 @@ SkillsInfoForm.propTypes = {
 SkillsInfoForm.defaultProps = {
   dataHandler: () => {},
 };
+
 export default SkillsInfoForm;
