@@ -21,6 +21,7 @@
         "quotes": ["error", "double"],
         "react/jsx-filename-extension": "off",
         "react/prefer-stateless-function": "off",
-        "react/forbid-prop-types": "off"
+        "react/forbid-prop-types": "off",
+        "func-names": ["error", "as-needed"]
     }
 }

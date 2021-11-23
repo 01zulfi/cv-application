@@ -34,7 +34,8 @@
           "**/*.js?(x)"
         ],
         "rules": {
-          "react/forbid-prop-types": "off"
+          "react/forbid-prop-types": "off",
+          "func-names": ["error", "as-needed"]
         }
       }
     ]
