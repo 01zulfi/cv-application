@@ -1,39 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "../styles/GeneralInfoForm.css";
 
 const GeneralInfoForm = function ({ dataHandler }) {
-  const generalInfoData = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    title: "",
-    objective: "",
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [title, setTitle] = useState("");
+  const [objective, setObjective] = useState("");
+
+  const data = {
+    firstName, lastName, email, phone, title, objective,
   };
 
   const inputHandler = (event) => {
     if (event.target.id === "first-name-input") {
-      generalInfoData.firstName = event.target.value;
+      setFirstName(event.target.value);
     }
     if (event.target.id === "last-name-input") {
-      generalInfoData.lastName = event.target.value;
+      setLastName(event.target.value);
     }
     if (event.target.id === "email-input") {
-      generalInfoData.email = event.target.value;
+      setEmail(event.target.value);
     }
     if (event.target.id === "phone-number-input") {
-      generalInfoData.phone = event.target.value;
+      setPhone(event.target.value);
     }
     if (event.target.id === "job-title-input") {
-      generalInfoData.title = event.target.value;
+      setTitle(event.target.value);
     }
     if (event.target.id === "objective-input") {
-      generalInfoData.objective = event.target.value;
+      setObjective(event.target.value);
     }
-
-    dataHandler("general", generalInfoData);
   };
+
+  const sendData = (attr) => {
+    dataHandler("general", {
+      ...data, attr,
+    });
+  };
+
+  useEffect(() => {
+    sendData({ firstName });
+  }, [firstName]);
+
+  useEffect(() => {
+    sendData({ lastName });
+  }, [lastName]);
+
+  useEffect(() => {
+    sendData({ email });
+  }, [email]);
+
+  useEffect(() => {
+    sendData({ phone });
+  }, [phone]);
+
+  useEffect(() => {
+    sendData({ objective });
+  }, [objective]);
+
+  useEffect(() => {
+    sendData({ title });
+  }, [title]);
 
   return (
     <div className="general-info-form-div">
