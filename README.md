@@ -6,7 +6,7 @@ Built using [React](https://reactjs.org/)
 
 ### Live Demo
 
-Click the link [here](https://xari4808.github.io/cv-application/) for the live preview. Deployed from the [main](https://github.com/xari4808/cv-application/tree/main) branch of this repository
+Click the link [here](https://01zulfi.github.io/cv-application/) for the live preview. Deployed from the [main](https://github.com/01zulfi/cv-application/tree/main) branch of this repository
 
 ### Information required
 
